@@ -26,11 +26,9 @@ using namespace std;
 
 // single node of a trie
 struct node{
-    char c;
     int fre;
     node *ar[26];
-    node( char c ){
-        this->c = c;
+    node(){
         fre = 1;
         for( int i = 0; i < 26; i++ ){
             ar[i] = NULL;
@@ -46,7 +44,7 @@ void add(node *root, string s, int idx ){
         root->ar[s[idx]-'a']->fre++;
     }
     else{
-        root->ar[s[idx]-'a'] = new node(s[idx]);
+        root->ar[s[idx]-'a'] = new node();
     }
     add(root->ar[s[idx]-'a'], s, idx+1);
 }
@@ -64,7 +62,7 @@ int count(node *root, string s, int idx ){
 int main(){
 	int n;
     cin >> n;
-    node *root = new node('@');
+    node *root = new node();
     while( n-- ){
         string q, s;
         cin >> q >> s;
