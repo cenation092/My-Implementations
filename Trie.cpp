@@ -29,7 +29,7 @@ struct node{
     int fre;
     node *ar[26];
     node(){
-        fre = 1;
+        fre = 0;
         for( int i = 0; i < 26; i++ ){
             ar[i] = NULL;
         }
@@ -40,12 +40,10 @@ struct node{
 // to add a string in a trie
 void add(node *root, string s, int idx ){
     if( idx == s.size() )return;
-    if( root->ar[s[idx]-'a'] != NULL ){
-        root->ar[s[idx]-'a']->fre++;
-    }
-    else{
+    if( root->ar[s[idx]-'a'] == NULL ){
         root->ar[s[idx]-'a'] = new node();
     }
+    root->ar[s[idx]-'a']->fre++;
     add(root->ar[s[idx]-'a'], s, idx+1);
 }
 
