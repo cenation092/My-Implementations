@@ -7,7 +7,6 @@ int main()
 {
     int n,m;
     cin >> n >> m;
-    //long int *ar=new long int[n+1]();
     long long sum=0,max=0;
     memset(ar,0,sizeof(ar));
     while(m--){
@@ -17,8 +16,6 @@ int main()
     	ar[a]+=k;
         if(b+1<=n)ar[b+1]-=k;
     }
-    //for(long int i=1;i<=n;i++) cout << ar[i] <<" ";
-    //cout <<"\n";
     for(int i=1;i<=n;i++){
     	ar[i] += ar[i-1];
         if(max<ar[i]) max=ar[i];
